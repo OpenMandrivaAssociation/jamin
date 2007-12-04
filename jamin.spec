@@ -73,7 +73,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/ladspa/%{name}cont_1912.so
 %{_menudir}/%name
 %{_datadir}/%name
-%{_mandir}/man1/jamin.1.bz2
+%{_mandir}/man1/jamin.1*
 %{_datadir}/applications/jamin.desktop
 %{_iconsdir}/jamin.svg
 %{_datadir}/locale/ru/LC_MESSAGES/jamin.mo

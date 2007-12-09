@@ -47,6 +47,7 @@ Planned features (in rough order of difficulty):
 
 %files
 %defattr(-,root,root)
+%doc AUTHORS ChangeLog README
 %{_bindir}/jamin
 %{_bindir}/jamin-scene
 %{_libdir}/ladspa/jamincont_1912.la
@@ -71,7 +72,7 @@ Planned features (in rough order of difficulty):
 %{_datadir}/jamin/pixmaps/thai-gold-knobs.png
 %{_datadir}/jamin/pixmaps/thai-gold.png
 %{_datadir}/locale/ru/LC_MESSAGES/jamin.mo
-%{_mandir}/man1/jamin.1.lzma
+%{_mandir}/man1/jamin.1.*
 %{_datadir}/mime/packages/jamin.xml
 
 #--------------------------------------------------------------------

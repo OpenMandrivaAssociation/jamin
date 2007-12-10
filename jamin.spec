@@ -78,6 +78,7 @@ Planned features (in rough order of difficulty):
 #--------------------------------------------------------------------
 
 %prep
+
 %setup -q -n %name-%version
 
 %build
@@ -86,6 +87,10 @@ Planned features (in rough order of difficulty):
 
 %install
 make DESTDIR=%buildroot  install
+%if %_lib != lib
+%__mkdir -p %buildroot%_libdir/ladspa
+%__mv -f %buildroot%_prefix/lib/ladspa/* %buildroot%_libdir/ladspa/
+%endif
 
 %clean
-
+rm -fr %buildroot

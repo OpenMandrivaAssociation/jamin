@@ -6,7 +6,6 @@ License:       GPL
 Group:	       Sound 
 Source0:       %{name}-%{version}.tar.bz2
 URL: 	       http://jamin.sourceforge.net/
-BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 BuildRequires: perl(XML::Parser)
 BuildRequires: libjack-devel

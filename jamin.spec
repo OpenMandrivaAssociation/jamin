@@ -4,6 +4,7 @@ Version:       0.95.0
 Release:       %mkrel 4
 License:       GPL
 Group:	       Sound 
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Source0:       %{name}-%{version}.tar.bz2
 URL: 	       http://jamin.sourceforge.net/
 

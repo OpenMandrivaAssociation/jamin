@@ -1,7 +1,7 @@
 Name:          jamin
 Summary:       Audio mastering from a mixed down multitrack source with JACK
 Version:       0.95.0
-Release:       %mkrel 4
+Release:       %mkrel 6
 License:       GPL
 Group:	       Sound 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot

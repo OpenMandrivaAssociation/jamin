@@ -1,19 +1,18 @@
-Name:          jamin
-Summary:       Audio mastering from a mixed down multitrack source with JACK
-Version:       0.95.0
-Release:       %mkrel 7
-License:       GPLv2+
-Group:	       Sound 
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-Source0:       %{name}-%{version}.tar.bz2
-URL: 	       http://jamin.sourceforge.net/
-
-BuildRequires: perl(XML::Parser)
-BuildRequires: libjack-devel
-BuildRequires: fftw-devel
-BuildRequires: libxml2-devel
-BuildRequires: gtk2-devel
-BuildRequires: liblo-devel
+Name:		jamin
+Summary:	Audio mastering from a mixed down multitrack source with JACK
+Version:	0.95.0
+Release:	%mkrel 8
+License:	GPLv2+
+Group:		Sound 
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+Source0:	%{name}-%{version}.tar.bz2
+URL:		http://jamin.sourceforge.net/
+BuildRequires:	perl(XML::Parser)
+BuildRequires:	libjack-devel
+BuildRequires:	fftw-devel
+BuildRequires:	libxml2-devel
+BuildRequires:	gtk2-devel
+BuildRequires:	liblo-devel
 
 %description
 JAM is a tool for producing audio masters from a mixed down 

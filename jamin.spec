@@ -1,7 +1,7 @@
 Name:		jamin
 Summary:	Audio mastering from a mixed down multitrack source with JACK
 Version:	0.95.0
-Release:	%mkrel 8
+Release:	%mkrel 9
 License:	GPLv2+
 Group:		Sound 
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -13,6 +13,7 @@ BuildRequires:	fftw-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	gtk2-devel
 BuildRequires:	liblo-devel
+Requires:	swh-plugins
 
 %description
 JAM is a tool for producing audio masters from a mixed down 

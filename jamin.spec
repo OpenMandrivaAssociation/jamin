@@ -1,7 +1,7 @@
 Name:		jamin
 Summary:	Audio mastering from a mixed down multitrack source with JACK
 Version:	0.95.0
-Release:	%mkrel 9
+Release:	%mkrel 10
 License:	GPLv2+
 Group:		Sound 
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -38,63 +38,38 @@ Planned features (in rough order of difficulty):
  * Loudness maximiser
  * Presets and scenes
 
-%if %mdkversion < 200900
-%post
-%{update_menus}
-%endif
-
-%if %mdkversion < 200900
-%postun
-%{clean_menus}
-%endif
-
-
-%files
+%files -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog README
+%doc AUTHORS ChangeLog README TODO
 %{_bindir}/jamin
 %{_bindir}/jamin-scene
-%{_libdir}/ladspa/jamincont_1912.la
 %{_libdir}/ladspa/jamincont_1912.so
-%{_datadir}/applications/jamin.desktop
-%{_datadir}/icons/jamin.svg
-%{_datadir}/jamin/examples/RIAA_EQ.jam
-%{_datadir}/jamin/examples/default.jam
-%{_datadir}/jamin/examples/jamin_ui
-%{_datadir}/jamin/examples/marble_jamin_ui
-%{_datadir}/jamin/pixmaps/JAMin_icon.xpm
-%{_datadir}/jamin/pixmaps/JAMin_splash.jpg
-%{_datadir}/jamin/pixmaps/LED_green_off.xpm
-%{_datadir}/jamin/pixmaps/LED_green_on.xpm
-%{_datadir}/jamin/pixmaps/LED_red.xpm
-%{_datadir}/jamin/pixmaps/LED_yellow.xpm
-%{_datadir}/jamin/pixmaps/about_image.png
-%{_datadir}/jamin/pixmaps/brushed-steel.png
-%{_datadir}/jamin/pixmaps/marble.jpg
-%{_datadir}/jamin/pixmaps/pause1.png
-%{_datadir}/jamin/pixmaps/play1.png
-%{_datadir}/jamin/pixmaps/thai-gold-knobs.png
-%{_datadir}/jamin/pixmaps/thai-gold.png
-%{_datadir}/locale/ru/LC_MESSAGES/jamin.mo
-%{_mandir}/man1/jamin.1.*
-%{_datadir}/mime/packages/jamin.xml
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/%{name}.svg
+%{_datadir}/%{name}
+%{_mandir}/man1/%{name}.*
+%{_datadir}/mime/packages/%{name}.xml
 
 #--------------------------------------------------------------------
 
 %prep
+%setup -q
 
-%setup -q -n %name-%version
+#fix plugindir
+sed -i -e 's|^plugindir =.*|plugindir = $(libdir)/ladspa|' controller/Makefile.in
 
 %build
 %configure2_5x
 %make
 
 %install
-make DESTDIR=%buildroot  install
-%if %_lib != lib
-%__mkdir -p %buildroot%_libdir/ladspa
-%__mv -f %buildroot%_prefix/lib/ladspa/* %buildroot%_libdir/ladspa/
-%endif
+rm -rf %{buildroot}
+%makeinstall_std
+
+# we don't want this
+rm -rf %{buildroot}%{_libdir}/ladspa/*.la
+
+%find_lang %{name}
 
 %clean
-rm -fr %buildroot
+rm -fr %{buildroot}

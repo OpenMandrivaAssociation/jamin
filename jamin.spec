@@ -1,7 +1,7 @@
 Name:		jamin
 Summary:	Audio mastering from a mixed down multitrack source with JACK
 Version:	0.95.0
-Release:	%mkrel 10
+Release:	%mkrel 11
 License:	GPLv2+
 Group:		Sound 
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -63,13 +63,9 @@ sed -i -e 's|^plugindir =.*|plugindir = $(libdir)/ladspa|' controller/Makefile.i
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 # we don't want this
 rm -rf %{buildroot}%{_libdir}/ladspa/*.la
 
 %find_lang %{name}
-
-%clean
-rm -fr %{buildroot}

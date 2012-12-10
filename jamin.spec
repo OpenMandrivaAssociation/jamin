@@ -1,14 +1,13 @@
 Name:		jamin
 Summary:	Audio mastering from a mixed down multitrack source with JACK
 Version:	0.95.0
-Release:	%mkrel 11
+Release:	13
 License:	GPLv2+
 Group:		Sound 
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Source0:	%{name}-%{version}.tar.bz2
 URL:		http://jamin.sourceforge.net/
 BuildRequires:	perl(XML::Parser)
-BuildRequires:	libjack-devel
+BuildRequires:	pkgconfig(jack)
 BuildRequires:	fftw-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	gtk2-devel
@@ -59,6 +58,7 @@ Planned features (in rough order of difficulty):
 sed -i -e 's|^plugindir =.*|plugindir = $(libdir)/ladspa|' controller/Makefile.in
 
 %build
+export LDFLAGS="-ldl"
 %configure2_5x
 %make
 
@@ -69,3 +69,47 @@ sed -i -e 's|^plugindir =.*|plugindir = $(libdir)/ladspa|' controller/Makefile.i
 rm -rf %{buildroot}%{_libdir}/ladspa/*.la
 
 %find_lang %{name}
+
+
+%changelog
+* Wed Jan 25 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.95.0-11mdv2011.0
++ Revision: 768336
+- see #65186 just rebuild
+
+* Sun Oct 24 2010 Jani Välimaa <wally@mandriva.org> 0.95.0-10mdv2011.0
++ Revision: 589149
+- clean and prettify .spec
+
+* Sun Oct 24 2010 Jani Välimaa <wally@mandriva.org> 0.95.0-9mdv2011.0
++ Revision: 588986
+- require swh-plugins (mdv#61409)
+
+* Tue Feb 09 2010 Sandro Cazzaniga <kharec@mandriva.org> 0.95.0-8mdv2010.1
++ Revision: 502929
+- clean and fix rpmlint warning on spec
+
+* Sun Jun 21 2009 Jérôme Brenier <incubusss@mandriva.org> 0.95.0-7mdv2010.0
++ Revision: 387551
+- use configure2_5x
+- fix license tag
+
+* Thu Jul 24 2008 Thierry Vignaud <tv@mandriva.org> 0.95.0-6mdv2009.0
++ Revision: 247382
+- rebuild
+- fix no-buildroot-tag
+- kill re-definition of %%buildroot on Pixel's request
+
+  + Pixel <pixel@mandriva.com>
+    - rpm filetriggers deprecates update_menus/update_scrollkeeper/update_mime_database/update_icon_cache/update_desktop_database/post_install_gconf_schemas
+
+* Mon Dec 10 2007 Nicolas Lécureuil <nlecureuil@mandriva.com> 0.95.0-4mdv2008.1
++ Revision: 116802
+- Fix install on x86_64
+- Fix Description
+  Fix BuildRequires
+  Remove old menu style
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - fix hardcoded man page extension
+    - import jamin
+

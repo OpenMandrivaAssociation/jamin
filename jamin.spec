@@ -1,7 +1,7 @@
 Name:		jamin
 Summary:	Audio mastering from a mixed down multitrack source with JACK
 Version:	0.95.0
-Release:	13
+Release:	14
 License:	GPLv2+
 Group:		Sound 
 Source0:	%{name}-%{version}.tar.bz2

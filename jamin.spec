@@ -5,7 +5,7 @@ Release:	14
 License:	GPLv2+
 Group:		Sound 
 Source0:	%{name}-%{version}.tar.bz2
-URL:		http://jamin.sourceforge.net/
+URL:		https://jamin.sourceforge.net/
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig(jack)
 BuildRequires:	fftw-devel

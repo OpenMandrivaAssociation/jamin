@@ -6,6 +6,11 @@ License:	GPLv2+
 Group:		Sound 
 Source0:	%{name}-%{version}.tar.bz2
 URL:		https://jamin.sourceforge.net/
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig(jack)
 BuildRequires:	fftw-devel
